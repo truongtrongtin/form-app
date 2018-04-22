@@ -39,7 +39,7 @@ app.post('/', [
     let {email, password, name, address} = matchedData(req); //ES6 destructuring
     User.create({email, password, name, address}, (err, user) => {
       if(err) return console.log(err);
-      res.send({success: 1});
+      return res.send({success: 1});
     });
 });
 
