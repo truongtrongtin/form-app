@@ -10,10 +10,10 @@ mongoose.connect('mongodb://localhost/form-app');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
-app.set('view engine', 'ejs');
+app.use(express.static('views'));
 
 app.get('/', (req, res, next) => {
-  res.render('register.ejs');
+  res.sendFile('index.html');
 });
 
 app.post('/', [
