@@ -1,41 +1,33 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <title>Form App</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+    crossorigin='anonymous'>
+</head>
 <body>
 <div class="container-fluid bg-light py-3">
   <div class="row">
     <div class="col-md-6 mx-auto">
       <div class="card card-body">
           <h3 class="text-center mb-4">Signup Form</h3>
-          <form action="/" method="POST">
+          <form id='myForm'>
               <div class="form-group">
-                <label for="email">Email
-                  <% if (errors.email) { %>
-                    <span class='alert-danger'><%= errors.email.msg %></span>
-                  <% } %>
-                </label>
+                <label for="email">Email <span id='emailError' class='alert-danger'></span></label>
                 <input id="email" class="form-control input-lg" placeholder="Enter Email" name="email" type="text">
               </div>
               <div class="form-group">
-                <label for="password">Password
-                  <% if (errors.password) { %>
-                    <span class='alert-danger'><%= errors.password.msg %></span>
-                  <% } %>
-                </label>
+                <label for="password">Password <span id='passwordError' class='alert-danger'></span></label>
                 <input id="password" class="form-control input-lg" placeholder="Enter Password" name="password" type="password">
               </div>
               <div class="form-group">
-                <label for="confirm-pw">Repeat Password
-                  <% if (errors.repassword) { %>
-                    <span class='alert-danger'><%= errors.repassword.msg %></span>
-                  <% } %>
-                </label>
+                <label for="confirm-pw">Repeat Password <span id='repasswordError' class='alert-danger'></span></label>
                 <input id="confirm-pw" class="form-control input-lg" placeholder="Repeat Password" name="repassword" type="password">
               </div>
               <div class="form-group">
-                <label for="full-name">Full Name
-                  <% if (errors.name) { %>
-                    <span class='alert-danger'><%= errors.name.msg %></span>
-                  <% } %>
-                </label>
+                <label for="full-name">Full Name <span id='nameError' class='alert-danger'></span></label>
                 <input id="full-name" class="form-control input-lg" placeholder="Full Name" name="name" type="text">
               </div>
               <div class="form-group">
@@ -53,6 +45,11 @@
                 <input class="btn btn-lg btn-primary btn-block" value="Sign Me Up" type="submit">
               </div>
             </form>
+            <script
+              src="http://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script>
+            <script src='js/script.js'></script>
       </div>
     </div>
   </div>

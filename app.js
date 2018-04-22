@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res, next) => {
-  res.render('index.ejs');
+  res.render('register.ejs');
 });
 
 app.post('/', [
@@ -25,21 +25,21 @@ app.post('/', [
   }),
   check('password', 'Password must have at least 6 characters').isLength({min: 6}),
   check('repassword', 'Password does not matched').custom((value, {req}) => {
-    return value == req.body.password;
+    return value === req.body.password;
   }),
-  check('name', 'Please enter your name').isLength({min: 1})
+  check('name', 'Please enter your name').isLength({min: 1}),
+  check('address')
 ], (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
       // console.log(errors.mapped());
-      return res.render('register.ejs', {errors: errors.mapped()});
+      return res.send(errors.mapped());
     }
     
     let {email, password, name, address} = matchedData(req); //ES6 destructuring
-    console.log(matchedData(req));
     User.create({email, password, name, address}, (err, user) => {
       if(err) return console.log(err);
-      res.redirect('/');
+      res.send({success: 1});
     });
 });
 
